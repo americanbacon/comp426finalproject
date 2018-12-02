@@ -3,10 +3,12 @@
     <head>
       <title>COMP426 Final Project</title>
       <meta charset="utf-8">
-      <link rel="stylesheet" href="Final_style.css" type="text/css" charset="utf-8"/>
-      <!--Link the scripts here-->
       <link rel="icon" href="images/favicon-airplane.jpg">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <!--Links to CSS sheets-->
+      <link rel="stylesheet" href="Final_style.css" type="text/css" charset="utf-8"/>
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <!--Link to JS files and jQuery library-->
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
       <script type="text/javascript" src="Final_script.js"></script>
     </head>
@@ -16,8 +18,8 @@
       <!--NavBar views = book flight, your flights, signout-->
       <section id="NavBar">
         <div class="navbar">
-          <button class="navbar-item" id="current-item">Book Flight</button>
-          <button class="navbar-item">Your Flights</button>
+          <button class="navbar-item current-item" id="book-flight">Book Flight</button>
+          <button class="navbar-item" id="your-flights">Your Flights</button>
           <button class="navbar-item">Logout</button>
         </div>
       </section>
@@ -25,9 +27,9 @@
       <section id="TripSelect">
         <h1>Where do you want to go?</h1>
         <div class="search">
-          <input type='text' placeholder='Select airport to depart from'>
+          <input type='text' placeholder='Select airport to depart from' id='depart_from'>
           <h2>TO</h2>
-          <input type='text' placeholder="Select airport to arrive to">
+          <input type='text' placeholder="Select airport to arrive to" id='arrive_to'>
           <input class="calendar" id='date' placeholder="Select date">
           <button class="submit button" id="LandingGo">GO</button>
         </search>

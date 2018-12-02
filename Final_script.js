@@ -1,6 +1,10 @@
 //Javascript + jQuery
 var root_url = 'http://comp426.cs.unc.edu:3001/';
 
+//Incase someone needs this to reload bookings
+//body.load('Project.html #TripSelect');
+
+
 $(document).ready(function(){
   // load AJAX log in information
   $.ajax({
@@ -14,22 +18,27 @@ $(document).ready(function(){
     xhrFields: {withCredentials: true},
     async: true,
     success: (response) => {
-      alert('success!');
+      console.log('POST to sessions was a success');
     }
   });
 
-  $('#date').hover(function(){
+  $('#date').mouseenter(function(){
     $('#date').datepicker();
   });
 
   //This function tears apart the landing page and builds the Available flight page
-  $('#LandingGo').click(function(){
+  $('body').on('click','#LandingGo', function(){
     //Select the body object
     let body = $('section#TripSelect');
+
+    //We want to grab the date and the airports before clearing the body.
+    let date = $('#date').val();
+
 
     //Empty and load new HTML stucture
     body.empty();
     body.load('AvailableFlights.html');
+
 
   });
 
@@ -43,6 +52,17 @@ $(document).ready(function(){
   });
 
   //This function handles the loading of the alternate page load
+
+
+  // This function handles the your flights loading
+  $('body').on('click', '#your-flights', function(){
+    // send you to html for your flights.  I can't create it and have it show up
+  });
+
+  // This function handles the book flights navbar loading
+  $('body').on('click', '#your-flights', function(){
+    // send you to html for your flights.  I can't create it and have it show up
+  });
 
 
 });

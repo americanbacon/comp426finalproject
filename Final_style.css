@@ -37,7 +37,7 @@ body {
   background-color: #f5f5f5;
 }
 
-.navbar #current-item {
+.navbar .current-item {
   color: #FF3B3F;
 }
 
@@ -79,13 +79,13 @@ input {
   background-color: #a0a0a0;
 }
 
-#GOGO {
+#LandingGo {
   background-color: #FF3B3F;
   color: white;
   min-width: 50px;
 }
 
-#GOGO:hover {
+#LandingGo:hover {
   background-color: #E53537;
 }
 
@@ -100,4 +100,9 @@ h1 {
 
 #date {
   width: 50%;
+}
+
+/*Testing css stuff */
+.ui-draggable, .ui-droppable {
+	background-position: top;
 }
