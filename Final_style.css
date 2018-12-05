@@ -79,7 +79,7 @@ input {
   background-color: #a0a0a0;
 }
 
-#LandingGo {
+#LandingGo, .select_flight {
   background-color: #FF3B3F;
   color: white;
   min-width: 50px;
@@ -105,4 +105,13 @@ h1 {
 /*Testing css stuff */
 .ui-draggable, .ui-droppable {
 	background-position: top;
+}
+
+.available_flight {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border: thin solid black;
+  width: 70%;
 }
