@@ -25,11 +25,18 @@
       </section>
       <!--Desination and Date Range Selector-->
       <section id="TripSelect">
+        <h2 class="color-header">Welcome to KMP Airlines!</h2>
         <h1>Where do you want to go?</h1>
         <div class="search">
-          <input type='text' placeholder='Select airport to depart from' id='depart_from'/>
+          <div class="autocomplete">
+            <input type='text' class='input' placeholder='Select airport to depart from' id='depart_from'/>
+            <div class="autocomplete-list"></div>
+          </div>
           <h2>TO</h2>
-          <input type='text' placeholder="Select airport to arrive to" id='arrive_to'/>
+          <div class="autocomplete">
+            <input type='text' class='input' placeholder="Select airport to arrive to" id='arrive_to'/>
+            <div class="autocomplete-list"></div>
+          </div>
           <input class="calendar" id='date' placeholder="Select date"/>
           <button class="submit button" id="LandingGo">GO</button>
         </div>

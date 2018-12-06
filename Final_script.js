@@ -1,6 +1,6 @@
 //Javascript + jQuery
 var root_url = 'http://comp426.cs.unc.edu:3001/';
-
+var plane_id;
 //Incase someone needs this to reload bookings
 //body.load('Project.html #TripSelect');
 
@@ -23,7 +23,8 @@ $(document).ready(function(){
   });
 
   // GET call to airports
-  let airports = {};
+  let airportsList = [];
+  let airportsDictionary = {};
   $.ajax({
     type: 'GET',
     url: root_url + 'airports/',
@@ -32,8 +33,10 @@ $(document).ready(function(){
     success: (response) => {
       console.log('GET from airports endpoint was a success. ' + response.length + ' results.');
       for (let x of response){
-        airports[x.city] = x;
+        airportsList.push(x.code.toUpperCase() +':'+x.city);
+        airportsDictionary[x.code] = x;
       }
+      airportsList.sort();
     }
   });
 
@@ -51,8 +54,8 @@ $(document).ready(function(){
 
     //We want to grab the date and the airports before clearing the body.
     let date = $('#date').val();
-    let depart_from = $('#depart_from').val();
-    let arrive_to = $('#arrive_to').val();
+    let depart_from = $('#depart_from').val().split(" ");
+    let arrive_to = $('#arrive_to').val().split(" ");
     let flight_airlineID;
     //Empty and load new HTML stucture
     body.empty();
@@ -60,28 +63,37 @@ $(document).ready(function(){
 
     //Grabbing the airports and associated flights
     $.ajax({
-      url: root_url + 'flights?' + 'filter[departure_id]=' + airports[depart_from].id + '&filter[arrival_id]=' + airports[arrive_to].id,
+      url: root_url + 'flights?filter[departure_id]=' + airportsDictionary[depart_from[0]].id + '&filter[arrival_id]=' + airportsDictionary[arrive_to[0]].id,
       type: 'GET',
       xhrFields: {withCredentials: true},
-      async: true,
+      async: false,
       success: (flights) => {
         //Log result to console
         console.log('Flights GET success. Returned ' + flights.length + ' results.');
         let target = $('#AvailableFlights');
         //This For-Of statement iterates through each of the flights that the AJAX call returned.
         for (let x of flights){
-          // $.ajax({
-          //   url: root_url + ,
-          //   type: 'GET',
-          //   xhrFields: {withCredentials: true},
-          //   async: false,
-          //   success: (airlines) => {
-          //     console.log('Airlines GET success. Returned ' + airlines.length + ' results.');
-          //   }
-          //
-          // });
-          // target.append('<div class="flightDiv">Departs from: '+depart_from+'<br> Arrives to:'+ arrive_to +'</div>')
-          // flight_airlineID = x.airline_id;
+          $.ajax({
+            url: root_url + 'airlines/'+ x.airline_id,
+            type: 'GET',
+            xhrFields: {withCredentials: true},
+            async: false,
+            success: (airline) => {
+              //Logging result of AJAX call to console.
+              console.log('Airlines GET success. Returned ' + airline.length + ' results.');
+              let flight_div = $('<div class="flightDiv"></div>');
+              target.append(flight_div);
+              flight_div.append('<p>Departs from: ' +depart_from+'</p>');
+              flight_div.append('<p>Arrives to: ' + arrive_to +'</p>');
+              flight_div.append('<p>Airline: ' + airline.name + '</p>');
+              flight_div.append('<p>Date:'+ date +'</p>');
+
+              plane_id = airline.plane_id;
+              //Things we want to still add: Date, time,
+            }
+
+          });
+
         }
       }
     });
@@ -104,10 +116,9 @@ $(document).ready(function(){
 
     body.empty();
     body.load('Booking_Page.html');
+
+    alert(plane_id);
   });
-
-  //This function handles the loading of the alternate page load
-
 
   // This function handles the your flights loading
   $('body').on('click', '#your-flights', function(){
@@ -127,5 +138,43 @@ $(document).ready(function(){
     $('#book-flight').addClass("current-item");
   });
 
+$("body").on("keyup", "input", function () {
+  let autocomplete_div =$(this).parent().find('.autocomplete-list');
+  autocomplete_div.empty();
+  let items = [];
+  let length = 0;
+  // console.log(items);
+  let text = $(this).val().toLowerCase();
+  if (text) {
+    autocomplete_div.css('display', 'block');
+    for(let airport of airportsList) {
+      if (airport.toLowerCase().includes(text)){
+        length = items.push(airport);
+      }
+    }
+    for(let i = 0; i < Math.min(items.length, 10); i++) {
+      let item = $('<div class="item"></div>');
+      let strings = items[i].split(":");
+      item.html(strings[0].toUpperCase() + " " + strings[1]);
+      // append items[i] to list;
+      autocomplete_div.append(item);
+    }
+    $(this).parent().append(autocomplete_div);
+  } else {
+    autocomplete_div.css('display', 'none');
+  }
+});
+
+$('body').on('click', '.item', function() {
+  $(this).parent().parent().find('.autocomplete-list').css('display', 'none');
+  let string = $(this).html();
+  $(this).parent().parent().find(':input').val(string);
+  $(this).parent().empty();
+});
 
 });
+
+// Doesn't work fix
+function titleCase(str) {
+  return str.replace(/\w\S/g, function(t) { return t.toUpperCase() });
+}

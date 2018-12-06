@@ -8,6 +8,7 @@ Neutral: #EFEFEF
 body {
   background-color: #efefef;
   font-family: Verdana, Geneva, sans-serif;
+  overflow: hidden;
 }
 
 .navbar {
@@ -53,9 +54,10 @@ input {
   box-sizing: border-box;
   font-size: 16px;
   padding: 10px;
-  border: 1px solid #ddd;
-  margin: 0px 5px;
+  border: 1px solid #A9A9A9;
+  /* margin: 0px 5px; */
   text-overflow: ellipsis;
+  height: 100%;
 }
 
 .button {
@@ -79,7 +81,11 @@ input {
   background-color: #a0a0a0;
 }
 
-#LandingGo, .select_flight {
+.calendar {
+  margin-left: 5px;
+}
+
+#LandingGo {
   background-color: #FF3B3F;
   color: white;
   min-width: 50px;
@@ -102,16 +108,60 @@ h1 {
   width: 50%;
 }
 
-/*Testing css stuff */
+.flightDiv {
+  /* border: solid;
+  border-width: 1px;
+  border-color: #A9A9A9;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 5px; */
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  z-index: 1;
+  box-shadow: -2px 2px 2px #A9A9A9;
+}
+
+.flightDiv:hover {
+  cursor: pointer;
+}
+
+/* This is for the datepicker */
 .ui-draggable, .ui-droppable {
 	background-position: top;
 }
 
-.available_flight {
-  margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
+.color-header {
+  color: #A9A9A9;
+  text-align: center;
+}
+
+.autocomplete {
+  width: 100%;
+  position: relative;
+}
+
+.autocomplete-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border: 1px solid #A9A9A9;
+  border-top: unset;
+  display: none;
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.item {
+  font-size: 16px;
+  padding: 10px;
   background-color: white;
-  border: thin solid black;
-  width: 70%;
+}
+
+.item:hover {
+  background-color: #A9A9A9;
+  cursor: pointer;
 }
