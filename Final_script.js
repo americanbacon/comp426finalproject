@@ -72,7 +72,9 @@ $(document).ready(function(){
         console.log('Flights GET success. Returned ' + flights.length + ' results.');
         let target = $('#AvailableFlights');
         //This For-Of statement iterates through each of the flights that the AJAX call returned.
-        for (let x of flights){
+        for (let x of flights) {
+          let depart_time = x.departs_at;
+          let arrive_time = x.arrives_at;
           $.ajax({
             url: root_url + 'airlines/'+ x.airline_id,
             type: 'GET',
@@ -81,6 +83,7 @@ $(document).ready(function(){
             success: (airline) => {
               //Logging result of AJAX call to console.
               console.log('Airlines GET success. Returned ' + airline.length + ' results.');
+
               let flight_div = $('<div class="flightDiv"></div>');
               target.append(flight_div);
               flight_div.append('<p>Departs from: ' +depart_from+'</p>');

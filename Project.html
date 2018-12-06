@@ -7,9 +7,11 @@
       <!--Links to CSS sheets-->
       <link rel="stylesheet" href="Final_style.css" type="text/css" charset="utf-8"/>
       <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"/>
       <!--Link to JS files and jQuery library-->
       <script src="https://code.jquery.com/jquery-1.12.4.js"></script> <!--This is the jQuery library-->
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> <!--This is the jQuery UI libray-->
+      <!-- If someone could figure out how to get the date format working that would be awesome I've spent too long on it -->
       <script type="text/javascript" src="Final_script.js"></script> <!--This is our final javascript file-->
     </head>
 
@@ -20,7 +22,7 @@
         <div class="navbar">
           <button class="navbar-item current-item" id="book-flight">Book Flight</button>
           <button class="navbar-item" id="your-flights">Your Flights</button>
-          <button class="navbar-item">Logout</button>
+          <button class="navbar-item" id="logout">Logout</button>
         </div>
       </section>
       <!--Desination and Date Range Selector-->
@@ -38,7 +40,7 @@
             <div class="autocomplete-list"></div>
           </div>
           <input class="calendar" id='date' placeholder="Select date"/>
-          <button class="submit button" id="LandingGo">GO</button>
+          <button class="accent button" id="LandingGo"><i class="fas fa-search"></i></button>
         </div>
       </section>
     </body>
