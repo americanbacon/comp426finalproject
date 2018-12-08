@@ -8,7 +8,6 @@ Neutral: #EFEFEF
 body {
   background-color: #efefef;
   font-family: Verdana, Geneva, sans-serif;
-  overflow: hidden;
 }
 
 .navbar {
@@ -36,7 +35,6 @@ body {
 
 .navbar button:hover {
   background-color: #f5f5f5;
-  cursor: pointer;
 }
 
 .navbar .current-item {
@@ -51,14 +49,14 @@ body {
 }
 
 input {
-  width: 100%;
+  width: 95%;
+  height: 50px;
   box-sizing: border-box;
   font-size: 16px;
   padding: 10px;
-  border: 1px solid #A9A9A9;
-  /* margin: 0px 5px; */
+  border: 1px solid #ddd;
+  margin: 0px 5px;
   text-overflow: ellipsis;
-  height: 100%;
 }
 
 .button {
@@ -82,17 +80,13 @@ input {
   background-color: #a0a0a0;
 }
 
-.calendar {
-  margin-left: 5px;
-}
-
-.accent {
+#LandingGo {
   background-color: #FF3B3F;
   color: white;
   min-width: 50px;
 }
 
-.accent:hover {
+#LandingGo:hover {
   background-color: #E53537;
 }
 
@@ -106,7 +100,13 @@ h1 {
 }
 
 #date {
-  width: 50%;
+  width: 30%;
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin: 0px 5px;
+  text-overflow: ellipsis;
 }
 
 .flightDiv {
@@ -139,40 +139,22 @@ h1 {
   text-align: center;
 }
 
-.autocomplete {
-  width: 100%;
-  position: relative;
-}
-
-.autocomplete-list {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  border: 1px solid #A9A9A9;
-  border-top: unset;
-  display: none;
-  overflow-y: auto;
-  max-height: 300px;
-}
-
-.item {
-  font-size: 16px;
-  padding: 10px;
-  background-color: white;
-}
-
+.list
 .item:hover {
-  background-color: #A9A9A9;
+  background-color: #e9e9e9;
   cursor: pointer;
 }
-
-#no-flights {
-  margin: 10px;
+div.autocomplete {
+  width: 30%;
 }
-
-.button-div {
-  /* padding-left: 10px; */
-  padding-left: 5px;
-  padding-top: 15px;
+div.autocomplete-list{
+  margin-left: 10px;
+  width: 80%;
+  background-color: white;
+}
+img {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  width: 100%;
 }
