@@ -22,12 +22,30 @@
         <div class="navbar">
           <button class="navbar-item current-item" id="book-flight">Book Flight</button>
           <button class="navbar-item" id="your-flights">Your Flights</button>
-          <button class="navbar-item" id="logout">Logout</button>
+          <button class="navbar-item kitty" id="logout">Logout</button>
         </div>
       </section>
+      <div class='modal' id='error_message'>
+        <div class='modal-content'>
+          <i class='fa fa-times' id ='close'></i>
+          <p class='message'></p>
+        </div>
+      </div>
+      <div class='modal' id='conf_message'>
+        <div class='modal-content'>
+          <p class='message'></p>
+          <div class='button-section'>
+            <button class='accent button' id='yes'>Yes</button>
+            <button class='button' id='no'>No</button>
+          </div>
+        </div>
+      </div>
       <!--Desination and Date Range Selector-->
       <section id="TripSelect">
-        <h2 class="color-header">Welcome to KMP Airlines!</h2>
+        <div class="inline">
+          <img class="round" src="images/kmp.jpg"/>
+          <h2 class="color-header">Welcome to KMP Airlines!</h2>
+        </div>
         <h1>Where do you want to go?</h1>
         <div class="search">
           <div class="autocomplete">
@@ -43,5 +61,6 @@
           <button class="accent button" id="LandingGo"><i class="fas fa-search"></i></button>
         </div>
       </section>
+
     </body>
   </html>
